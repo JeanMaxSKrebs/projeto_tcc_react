@@ -17,6 +17,7 @@ const FormSalao = (props) => {
     const [descricao, setDescricao] = useState("")
     const [localizacao, setLocalizacao] = useState("")
     const [cnpj, setCnpj] = useState(0)
+    const [imagem, setImagem] = useState(null);
 
     const [editMode, setEditMode] = useState(false)
 
@@ -35,20 +36,31 @@ const FormSalao = (props) => {
             setDescricao(salaoEdit.descricao);
             setLocalizacao(salaoEdit.localizacao);
             setCnpj(salaoEdit.cnpj);
+            setImagem(salaoEdit.imagem);
 
         }
     }, []);
 
+    const handleImagemChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+      
+        reader.onload = (e) => {
+          setImagem(e.target.result);
+        };
+      
+        reader.readAsDataURL(file);
+      };
+
     const addSalao = async e => {
         e.preventDefault()
-        // console.log(input)
-        console.log(nome)
 
         const docRef = await addDoc(collectionRef, {
             nome: nome,
             descricao: descricao,
             localizacao: localizacao,
             cnpj: cnpj,
+            imagem: imagem,
         })
         console.log(docRef.id)
 
@@ -56,6 +68,7 @@ const FormSalao = (props) => {
         setDescricao("");
         setLocalizacao("");
         setCnpj(0);
+        setImagem("");
     }
 
     const updSalao = async e => {
@@ -66,18 +79,21 @@ const FormSalao = (props) => {
             descricao: descricao,
             localizacao: localizacao,
             cnpj: cnpj,
+            imagem: imagem,
+
         })
         setSalao({})
         setNome('')
         setDescricao('')
         setLocalizacao('')
         setCnpj(0)
+        setImagem("");
 
         setEditMode(false);
         props.onCloseModal()
     }
 
- 
+
     return (
 
         <div className="form-saloes">
@@ -137,6 +153,17 @@ const FormSalao = (props) => {
                         placeholder="CNPJ"
                         onChange={(e) => setCnpj(e.target.value)}
                         value={cnpj || ""}
+                        required
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Form.Label htmlFor="imagem">Imagem:</Form.Label>
+                    <Form.Control
+                        as="input"
+                        type="file"
+                        name="imagem"
+                        className="form-control"
+                        onChange={handleImagemChange}
                         required
                     />
                 </FormGroup>

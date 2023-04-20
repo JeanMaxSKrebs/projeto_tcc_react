@@ -1,6 +1,5 @@
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import FormSalao from './FormSalao';
 
 import { Card, Col } from 'react-bootstrap';
 
@@ -16,6 +15,7 @@ const Salao = (props) => {
             {/* coluna com 12 de largura em telas pequenas (xs), 6 em médias (md) e 4 em grandes (lg) */}
             <Card className='salao' >
                 <Card.Body>
+                    <Card.Img variant="top" src={salao.imagem} />
                     <Card.Title>{salao.nome}</Card.Title>
                     <Card.Text>{salao.descricao}</Card.Text>
                     <Card.Text>{salao.localizacao}</Card.Text>
