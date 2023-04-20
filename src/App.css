@@ -166,13 +166,13 @@ body {
 
 .modalSalao .modal-body {
   /* defina aqui as propriedades de estilo para o corpo do Modal */
-  background-color: #9b9b9b;
+  background-color: #444444;
+  color: #FFF34D;
   padding: 10px;
 }
 
 .modalSalao .dados {
   background-color: #444444;
-  color: #FFF34D;
   border-radius: 15px;
 }
 

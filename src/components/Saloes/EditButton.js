@@ -3,16 +3,16 @@ import { PencilFill } from 'react-bootstrap-icons';
 import { useState } from 'react'
 import FormSalao from './FormSalao';
 
-const closeModal = () => {
-    EditButton.setShowModal(false);
-}
-
 const EditButton = (props) => {
     let id = props.id;
     let saloes = props.saloes;
 
     const [showModal, setShowModal] = useState(false);
     const [salaoData, setSalaoData] = useState({});
+
+    const closeModal = () => {
+        setShowModal(false);
+    }
 
     const handleEdit = (salaoId) => {
         // encontra o salão com o ID correspondente
@@ -44,7 +44,7 @@ const EditButton = (props) => {
                         <p>Localização do salão: {salaoData.localizacao}</p>
                         <p>Nome do salão: {salaoData.cnpj}</p>
                     </div> */}
-                    <FormSalao className='dados' salao={salaoData} onSubmit={() => setShowModal(false)}/>
+                    <FormSalao className='dados' salao={salaoData} onCloseModal={closeModal}/>
 
                 </Modal.Body>
                 <Modal.Footer>

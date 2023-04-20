@@ -74,9 +74,10 @@ const FormSalao = (props) => {
         setCnpj(0)
 
         setEditMode(false);
+        props.onCloseModal()
     }
 
-
+ 
     return (
 
         <div className="form-saloes">
