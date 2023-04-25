@@ -37,8 +37,10 @@ const MostraSaloes = () => {
 
     return (
         <div className="list-saloes">
-            <h2>Lista de Salões:</h2>
-            <Row>
+            {/* <h2>Lista de Salões:</h2> */}
+            {/* <Row> */}
+            <Row className="justify-content-center">
+
                 {saloes.length === 0 && <p>Não Existem Salões no Banco</p>}
                 {saloes.map((salao) => (
                     <Salao key={salao.id} salao={salao} saloes={saloes}
