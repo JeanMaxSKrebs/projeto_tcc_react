@@ -36,6 +36,9 @@
 
 /*minhas modificações*/
 
+
+
+
 .saloes-header {
   padding: 0.5em;
   border-bottom: 1px solid black;
@@ -244,7 +247,7 @@ section.resume-section {
 @media (min-width: 992px) {
   .App {
     width: 80vw;
-    margin: auto 20vw;
+    margin: 10vh 0 0 20vw;
     background-color: #444444;
     border-radius: 5px;
     color: #FFF34D;

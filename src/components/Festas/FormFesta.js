@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 
-const FormSalao = (props) => {
+const FormFesta = (props) => {
     // console.log("mostra o form");
 
-    const collectionRef = collection(db, "saloes");
-    const [salao, setSalao] = useState([]);
+    const collectionRef = collection(db, "festas");
+    const [festa, setFesta] = useState([]);
 
     const [nome, setNome] = useState("")
     const [descricao, setDescricao] = useState("")
@@ -20,20 +20,20 @@ const FormSalao = (props) => {
 
     const isFormValid = nome && descricao && localizacao && cnpj;
 
-    let salaoEdit = props.salao;
+    let festaEdit = props.festa;
 
 
     useEffect(() => {
-        if (salaoEdit) {
-            // console.log(props.salao)
-            console.log(salaoEdit)
+        if (festaEdit) {
+            // console.log(props.festa)
+            console.log(festaEdit)
             setEditMode(true);
 
-            setNome(salaoEdit.nome);
-            setDescricao(salaoEdit.descricao);
-            setLocalizacao(salaoEdit.localizacao);
-            setCnpj(salaoEdit.cnpj);
-            setImagem(salaoEdit.imagem);
+            setNome(festaEdit.nome);
+            setDescricao(festaEdit.tipo);
+            setLocalizacao(festaEdit.data);
+            setCnpj(festaEdit.nomeSalao);
+            setImagem(festaEdit.nomeCliente);
 
         }
     }, []);
@@ -49,7 +49,7 @@ const FormSalao = (props) => {
         reader.readAsDataURL(file);
       };
 
-    const addSalao = async e => {
+    const addFesta = async e => {
         e.preventDefault()
 
         const docRef = await addDoc(collectionRef, {
@@ -68,10 +68,10 @@ const FormSalao = (props) => {
         setImagem("");
     }
 
-    const updSalao = async e => {
+    const updFesta = async e => {
         e.preventDefault();
 
-        await updateDoc(doc(db, "saloes", salaoEdit.id), {
+        await updateDoc(doc(db, "festas", festaEdit.id), {
             nome: nome,
             descricao: descricao,
             localizacao: localizacao,
@@ -79,7 +79,7 @@ const FormSalao = (props) => {
             imagem: imagem,
 
         })
-        setSalao({})
+        setFesta({})
         setNome('')
         setDescricao('')
         setLocalizacao('')
@@ -93,12 +93,12 @@ const FormSalao = (props) => {
 
     return (
 
-        <div className="form-saloes">
+        <div className="form-festas">
             <h2>Formulário</h2>
             <Form>
                 <FormGroup>
-                    {/* <Chip for="nome" label="Nome do Salão: " /> */}
-                    <Form.Label htmlFor="nome">Nome do Salão:</Form.Label>
+                    {/* <Chip for="nome" label="Nome do Festa: " /> */}
+                    <Form.Label htmlFor="nome">Nome do Festa:</Form.Label>
                     <Form.Control
                         as="input"
                         type="text"
@@ -167,11 +167,11 @@ const FormSalao = (props) => {
 
                 <Button
                     type="submit"
-                    onClick={editMode ? updSalao : addSalao}
+                    onClick={editMode ? updFesta : addFesta}
                     color={editMode ? "success" : "primary"}
                     disabled={!editMode ? !isFormValid : ""}
                 >
-                    {editMode ? "Edit" : "Add"} &nbsp;Salão
+                    {editMode ? "Edit" : "Add"} &nbsp;Festa
                 </Button>
             </Form>
         </div>
@@ -179,4 +179,4 @@ const FormSalao = (props) => {
     )
 }
 
-export default FormSalao;
+export default FormFesta;

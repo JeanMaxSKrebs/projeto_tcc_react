@@ -1,7 +1,7 @@
 import { Button, Modal } from 'react-bootstrap';
 import { PencilFill } from 'react-bootstrap-icons';
 import { useState } from 'react'
-import FormSalao from './FormSalao';
+import FormSalao from '../Saloes/FormSalao';
 
 const EditButton = (props) => {
     let id = props.id;

@@ -1,8 +1,7 @@
-import EditButton from './EditButton';
-import DeleteButton from './DeleteButton';
+import EditButton from '../Botoes/EditButton';
+import DeleteButton from '../Botoes/DeleteButton';
 
 import { Card, Col, Carousel } from 'react-bootstrap';
-import { AlignCenter } from 'react-bootstrap-icons';
 
 const Salao = (props) => {
 
