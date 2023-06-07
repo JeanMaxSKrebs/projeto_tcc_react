@@ -2,6 +2,7 @@ import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 
 import { Card, Col, Carousel } from 'react-bootstrap';
+import { AlignCenter } from 'react-bootstrap-icons';
 
 const Salao = (props) => {
 
@@ -13,8 +14,8 @@ const Salao = (props) => {
     return (
         <Col xs={12} md={6} lg={4} style={{ marginBottom: '20px' }}>
             {/* coluna com 12 de largura em telas pequenas (xs), 6 em médias (md) e 4 em grandes (lg) */}
-            <Card className='salao' style={{ flexGrow: 1, height: '100%' }}>
-                <Card.Body style={{ padding: '0px' }}>
+            <Card className='salao' style={{ flexGrow: 1, height: '100%',  display: 'flex', justifyContent: 'center'}}>
+                <Card.Body style={{ flex: '0 0 auto' }}>
                     {/* <Carousel interval={3000} pauseOnHover={true}>
                         {salao.imagens.map((imagem, index) => (
                             <Carousel.Item key={index}>
@@ -22,9 +23,9 @@ const Salao = (props) => {
                             </Carousel.Item>
                         ))}
                     </Carousel> */}
+                    <Card.Title>{salao.nome}</Card.Title>
                     <Card.Img variant="top" src={salao.logo} />
                     <Card.Img variant="top" src={salao.imagem} />
-                    <Card.Title>{salao.nome}</Card.Title>
                     <Card.Text>{salao.descricao}</Card.Text>
                     <Card.Text>{salao.localizacao}</Card.Text>
                     <Card.Text>{salao.cnpj}</Card.Text>

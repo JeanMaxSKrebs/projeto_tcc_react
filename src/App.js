@@ -8,14 +8,14 @@ import SideNav from './components/Estrutura/SideNav';
 function App() {
   return (
     <>
-      <TopNav />
+      {/* <TopNav /> */}
       <SideNav />
       <div className="App">
         <div className="saloes-header">
           <h1>Salões</h1>
         </div>
 
-        {/* <FormSalao /> */}
+        <FormSalao />
 
         <MostraSaloes />
 
